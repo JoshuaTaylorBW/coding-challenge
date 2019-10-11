@@ -4,6 +4,14 @@ block content
 	h1= title 
 	h2 These are the 20 highest user rated movies on tMDB 
 
+	p some filter routes are as such
+	ol
+		li /view/language/                            (ex. es, en, jp, etc)
+		li /view/popularity_greater_than/             (ex. 500)  
+		li /view/popularity_less_than/                (ex. 500)  
+		li /view/vote_average_greater_than/           (ex. 8.7)  
+		li /view/vote_average_less_than/              (ex. 8.7)  
+
 	each movie in databaseData
 		h3= movie.title
 		a(href="/view/" + movie.id)= movie.title
