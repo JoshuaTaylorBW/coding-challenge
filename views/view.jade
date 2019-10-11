@@ -1,0 +1,25 @@
+html
+	head
+		link(rel='stylesheet', href='/stylesheets/style.css')
+
+form(name="movie-info", method="post")
+	h1 Name 
+	input.name-box(type = "text" value = movieData.title name="title" maxLength="160")
+
+	h2 Description
+
+	textarea.description-box(name="description" rows="15" cols="150")= movieData.description
+
+	h2 Popularity
+
+	input(type = "number", value = movieData.popularity name="popularity" step=".001")
+
+	h2 Language 
+
+	input(type = "text", value = movieData.language name="language" maxLength="5")
+
+	input(type="submit", value="submit" class="submit-button")
+
+p= "popularity: " + movieData.popularity
+p= "average user score: " + movieData.vote_average
+p= "language: " + movieData.language

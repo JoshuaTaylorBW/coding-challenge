@@ -1,5 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title 
+	h2 These are the 20 highest user rated movies on tMDB 
+
+	each movie in databaseData
+		h3= movie.title
+		a(href="/view/" + movie.id)= movie.title
+		p= movie.description
+		p= "popularity: " + movie.popularity
+		p= "average user score: " + movie.vote_average
+		p= "language: " + movie.language
