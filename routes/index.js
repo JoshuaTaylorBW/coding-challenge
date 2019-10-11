@@ -10,7 +10,6 @@ const db = pgp(cn);
 
 let sco;
 
-//TODO: make a .env
 let apiData;
 let databaseData;
 
@@ -34,7 +33,9 @@ router.get('/', function(req, res, next) {
 							for(var i = 0; i < apiData.length; i++) {
 								sco.none('INSERT INTO Movies(id, title, vote_average, popularity, language, description) VALUES($1, $2, $3, $4, $5, $6)', [i, apiData[i].title, apiData[i].vote_average, apiData[i].popularity, apiData[i].original_language, apiData[i].overview], event => event.id)
 								.then(data => {
-									// console.log("we got to here...");
+									return sco.any("SELECT * FROM Movies");
+								}).then(newlyInsertedData => {
+									databaseData = newlyInsertedData;
 								})
 								.catch(error => {
 									console.log(error);
